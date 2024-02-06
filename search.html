@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Page Turner Plates Search Results</title>
+</head>
+
+<body>
+    <header>
+        <h1>Page Turner Plates</h1>
+    </header>
+
+    <section id="search-form">
+        <h2>Search:</h2>
+        <div class = "flex-box" id = "recipe-search">
+            <input type = "text" id = "query" name = "q" placeholder="Search">
+            <button id = "fetch-button">Search</button>
+        </div>
+    </section>
+
+    <main>
+        <section id = "recipe-results">
+            <h2>Recipes</h2>
+                <div class = "recipes" id = "recipes">
+                    <!-- Dynamically generated content consisting of five search results for the specific keyword -->
+                </div>
+        </section>
+    
+        <section id = "book-search">
+            <h2>Cookbooks</h2>
+                <div class = "books" id = "books">
+                    <!-- Dynamically generated content consisting of three book search results for the specific keyword -->
+                </div>
+        </section>
+    </main>
+        <footer>
+            <p>Made with care by...</p>
+            <div>
+                <!-- Images will be placed here along the bottom when found-->
+            </div>
+        </footer>
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
