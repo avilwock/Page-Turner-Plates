@@ -4,7 +4,7 @@ var recSearch = document.querySelector('#query');
 var recipeURL = `https://www.themealdb.com/api/json/v1/1/search.php?s=${recSearch.value}`
 
 //Book Search API key npg4qc8fzyzb793s57jf4v2w -
-var bookURL = `https://api.penguinrandomhouse.com/resources/v2/title/domains/PRH.US/search?q=${recSearch.value}+cookbooks&api_key=npg4qc8fzyzb793s57jf4v2w
+var bookURL = `https://api.penguinrandomhouse.com/resources/v2/title/domains/PRH.US/search?q=${recSearch.value}&api_key=npg4qc8fzyzb793s57jf4v2w
 `
 
 // Fetch function to pull recipes from API
@@ -21,7 +21,7 @@ function searchbtn(event) {
 // Fetch Funtion to pull books from API
 function bookSearch(event) {
     event.preventDefault();
-    fetch(`https://api.penguinrandomhouse.com/resources/v2/title/domains/PRH.US/search?q=${recSearch.value}+cookbooks&api_key=npg4qc8fzyzb793s57jf4v2w
+    fetch(`https://api.penguinrandomhouse.com/resources/v2/title/domains/PRH.US/search?q=${recSearch.value}&api_key=npg4qc8fzyzb793s57jf4v2w
     `)
     
         .then(res => res.json())
@@ -40,3 +40,12 @@ function storedHistory() {
     var searchHistory;
     var searchQuery = document.getElementById()
 }
+
+
+
+
+//LOCAL STORAGE
+// function storedHistory() {
+//     var searchHistory;
+//     var searchQuery = document.getElementById()
+// }
