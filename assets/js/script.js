@@ -15,6 +15,13 @@ function searchbtn(event) {
         .then(recList => {
             console.log(recList)
             console.log(recSearch.value)
+            for (let i = 0; i < 5; i++) {
+                document.querySelector('#recName-' + i).textContent = recList.meals[i].strMeal;
+                document.querySelector('#recPic-' + i).setAttribute('src', recList.meals[i].strMealThumb);
+                document.querySelector('#recWebsite-' + i).setAttribute('href', recList.meals[i].strSource);
+                
+           
+            }
         })
 }
 
