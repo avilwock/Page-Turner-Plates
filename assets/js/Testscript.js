@@ -42,10 +42,3 @@ function storedHistory() {
 }
 
 
-
-
-//LOCAL STORAGE
-// function storedHistory() {
-//     var searchHistory;
-//     var searchQuery = document.getElementById()
-// }
