@@ -2,15 +2,44 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    padding: 10px;
+    gap: 10px; /* Adjust the gap between images as needed */
+    padding: 10px; /* Add padding to the container as needed */
 
+    /* Optional: Set a maximum width for the container */
     max-width: 150px;
-    margin: 0 auto;
+    margin: 0 auto; /* Center the container on the page */
 }
 
 #footer-images img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
+    max-width: 100%; /* Ensure images don't exceed their container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional: Add rounded corners to images */
+}
+
+.modal {
+    display:none;
+    position:fixed;
+    top: 10%;
+    left: 50%;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid black;
+    box-shadow: 0 4px 8 px darkgray;
+}
+
+.close {
+    color: gray;
+    float: right;
+    margin-top: 2px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top:10px;
+    right: 10px;
+}
+
+.modal-contact p span a{
+    margin: 10px 0 !important;
+
 }
