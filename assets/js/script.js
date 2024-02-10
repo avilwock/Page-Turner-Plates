@@ -64,11 +64,12 @@ function searchbtn(event) {
             }
 
             for (let i = 0; i < 5; i++) {
+                if (recList.meals[i].strSource.trim() !== '') {
                 document.querySelector('#recName-' + i).textContent = recList.meals[i].strMeal;
                 document.querySelector('#recPic-' + i).setAttribute('src', recList.meals[i].strMealThumb);
                 document.querySelector('#recWebsite-' + i).setAttribute('href', recList.meals[i].strSource);
                 
-                
+                }
             }
         })
 }
