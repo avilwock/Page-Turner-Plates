@@ -18,6 +18,14 @@
             <input type = "text" id = "query" name = "q" placeholder="Search">
             <button  id = "fetch-button">Search</button>
         </div>
+
+    <!-- <button id = "open-modal-btn"></button> -->
+        <div id ="modal" class = "modal">
+            <div class = "modal-contact">
+                <p>To see more recipes, please click: <br> <span id = "more-recipes"></span></p>
+                <span id = "close" class = "close"> &times;</span>
+            </div>
+        </div>
     </section>
 
     <main>
@@ -25,51 +33,37 @@
             <h2>Recipes</h2>
                 <div class = "recipes" id = "recipes">
                     
-                    <div>
-                        <!-- This section will have dynamically generated recipe images and titles -->
-                        <a> <img src = "https://placehold.co/600x400" alt = "This is a placeholder for the first recipe"></a>
-                        <p>RecipeName</p>
-                        <p id="recName-0"></p>
+                    <div>         
                         <img id="recPic-0"></img>
                         <a id="recWebsite-0"></a> 
-                        
+                        <p id="recName-0"></p>
                     </div>
 
                     <div>
-                        <!-- This section will have dynamically generated recipe images and titles -->
-                        <a> <img src = "https://placehold.co/600x400" alt = "This is a placeholder for the second recipe"></a>
-                        <p>RecipeName</p>
-                        <p id="recName-1"></p>
-                        <p id="recPic-1"></p>
+                        <img id="recPic-1"></img>
                         <p id="recWebsite-1"></p>
+                        <p id="recName-1"></p>
                     </div>
 
                     <div>
-                        <!-- This section will have dynamically generated recipe images and titles -->
-                        <a> <img src = "https://placehold.co/600x400" alt = "This is a placeholder for the third recipe"></a>
-                        <p>RecipeName</p>
-                        <p id="recName-2"></p>
-                        <p id="recPic-2"></p>
+                        <img id="recPic-2"></img>
                         <p id="recWebsite-2"></p>
+                        <p id="recName-2"></p>
                     </div>
 
                     <div>
-                        <!-- This section will have dynamically generated recipe images and titles -->
-                        <a> <img src = "https://placehold.co/600x400" alt = "This is a placeholder for the fourth recipe"></a>
-                        <p>RecipeName</p>
-                        <p id="recName-3" ></p>
-                        <p id="recPic-3"></p>
+                        <img id="recPic-3"></img>
                         <p id="recWebsite-3"></p>
+                        <p id="recName-3" ></p>
                     </div>
 
                     <div>
-                        <!-- This section will have dynamically generated recipe images and titles -->
-                        <a> <img src = "https://placehold.co/600x400" alt = "This is a placeholder for the fifth recipe"></a>
-                        <p>RecipeName</p>
-                        <p id="recName-4" ></p>
-                        <p id="recPic-4"></p>
+                        <img id="recPic-4"></img>
                         <p id="recWebsite-4"></p>
+                        <p id="recName-4" ></p>
                     </div>
+
+
 
                     <!-- Dynamically generated content consisting of five search results for the specific keyword -->
                 </div>
@@ -100,6 +94,31 @@
 
                 </div>
         </section>
+
+        <aside id="favorites-form">
+            <h3>Favorites</h3>
+            <div id = "favorite-storage">
+                
+                <div>
+                    <!-- This section will have dynamically generated recipe images and titles -->
+                    <a> <img src = "https://placehold.co/600x400" alt = "This is a placeholder for the first recipe"></a>
+                    <p>RecipeName</p>
+                </div>
+                
+                <div>
+                    <!-- This section will have dynamically generated recipe images and titles -->
+                    <a> <img src = "https://placehold.co/600x400" alt = "This is a placeholder for the second recipe"></a>
+                    <p>RecipeName</p>
+                </div>
+                
+                <div>
+                    <!-- This section will have dynamically generated recipe images and titles -->
+                    <a> <img src = "https://placehold.co/600x400" alt = "This is a placeholder for the third recipe"></a>
+                    <p>RecipeName</p>
+                </div>
+                
+            </div>
+        </aside>
     </main>
         <footer class = "footer">
             <p>Made with care by...</p>
