@@ -64,7 +64,7 @@ function searchbtn(event) {
             var modalContent = document.querySelector('.modal-contact p span');
             modalContent.innerHTML = "";
 
-            for (let i = 0; i < Math.min(totalResults, maxResults); i++) {
+            for (let i = 6; i < Math.min(totalResults, maxResults); i++) {
                 var linkElement = document.createElement("a");
                 linkElement.href = recList.meals[i].strSource;
                 linkElement.textContent = recList.meals[i].strMeal;
