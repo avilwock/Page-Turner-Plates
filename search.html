@@ -3,86 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Page Turner Plates Search Results</title>
+    <title>Page Turner Plates</title>
 </head>
 
 <body>
-    <header>
-        <h1>Page Turner Plates</h1>
+    <header class = "hero">
+        <h1 class = "is-size-1 has-text-centered">Page Turner Plates</h1>
     </header>
 
-    <section id="search-form">
-        <h2>Search:</h2>
-        <div class = "flex-box" id = "recipe-search">
-            <input type = "text" id = "query" name = "q" placeholder="Search">
-            <button  id = "fetch-button">Search</button>
-        </div>
-
-    <!-- <button id = "open-modal-btn"></button> -->
-        <div id ="modal" class = "modal">
-            <div class = "modal-contact">
-                <p>To see more recipes, please click: <br> <span id = "more-recipes"></span></p>
-                <span id = "close" class = "close"> &times;</span>
+    <div class = "main-container">
+        <section id="search-form">
+            <h2>Search:</h2>
+            <div class = "flex-box" id = "recipe-search">
+                <input type = "text" id = "query" name = "q" placeholder="Search">
+                <button  id = "fetch-button">Search</button>
             </div>
-        </div>
-    </section>
 
-    <main>
-        <section id = "recipe-results">
-            <h2>Recipes</h2>
-                <div class = "recipes" id = "recipes">
-                    
-                    <!-- <div>         
-                        
-                        <a id="recWebsite-0"><img id="recPic-0"></img></a> 
-                        <p id="recName-0"></p>
-                        <button id="favorites">Add to Favorites</button>
-                    </div> -->
-
-    
-
-
-                    <!-- Dynamically generated content consisting of five search results for the specific keyword -->
+        <!-- <button id = "open-modal-btn"></button> -->
+            <div id ="modal" class = "modal">
+                <div class = "modal-contact">
+                    <p>To see more recipes, please click: <br> <span id = "more-recipes"></span></p>
+                    <span id = "close" class = "close"> &times;</span>
                 </div>
-        </section>
-    
-        <section id = "book-search">
-            <h2>Cookbooks</h2>
-                <div class = "books" id = "books">
-                    
-                    <!-- Dynamically generated content consisting of three book search results for the specific keyword -->
-                    <div>
-                        <!-- This section will have dynamically generated cookbook images and titles -->
-                        <a> <img src = "https://placehold.co/600x400" alt = "This is a placeholder for the first book"></a>
-                        
-                        <a id="bookWebsite-0"><p id="bookName-0"></p></a>
-                        <img id="bookPic-0"><img> 
-                        <p id="bookAuthor-0">Author</p>                      
-                    </div>
-                    
-                    <div>
-                        <!-- This section will have dynamically generated cookbook images and titles -->
-                        <a> <img src = "https://placehold.co/600x400" alt = "This is a placeholder for the second book"></a>
-                        <p></p>
-                        <a id="bookWebsite-1"><p id="bookName-1"></p></a>
-                        <img id="bookPic-1"><img> 
-                        <p id="bookAuthor-1">Author</p>  
-                    </div>
-
-                    <div>
-                        <!-- This section will have dynamically generated cookbook images and titles -->
-                        <a> <img src = "https://placehold.co/600x400" alt = "This is a placeholder for the third book"></a>
-                        <p></p>    
-                        
-                        <a id="bookWebsite-2"><p id="bookName-2"></p></a>
-                        <img id="bookPic-2"><img> 
-                        <p id="bookAuthor-2"></p>  
-                    </div>
-
-                </div>
+            </div>
         </section>
 
+        <main>
+                <h2 class = "is-size-2 has-text-centered">Recipes</h2>
+                <section id = "recipe-results">
+                    <div class = "recipes" id = "recipes">
+                        
+                        <!-- <div>         
+                            
+                            <a id="recWebsite-0"><img id="recPic-0"></img></a> 
+                            <p id="recName-0"></p>
+                            <button id="favorites">Add to Favorites</button>
+                        </div> -->
+
+        
+
+
+                        <!-- Dynamically generated content consisting of five search results for the specific keyword -->
+                    </div>
+            </section>
+            
+            <h2 class = "is-size-2 has-text-centered">Cookbooks</h2>
+            <section id = "book-search">
+                
+                    <div class = "books" id = "books">
+                        
+                        <!-- Dynamically generated content consisting of three book search results for the specific keyword -->
+                        <div>
+                            <!-- This section will have dynamically generated cookbook images and titles -->
+                            <a> <img src = "https://placehold.co/600x400" alt = "This is a placeholder for the first book"></a>
+                            
+                            <a id="bookWebsite-0"><p id="bookName-0"></p></a>
+                            <img id="bookPic-0"><img> 
+                            <p id="bookAuthor-0">Author</p>                      
+                        </div>
+                        
+                        <div>
+                            <!-- This section will have dynamically generated cookbook images and titles -->
+                            <a> <img src = "https://placehold.co/600x400" alt = "This is a placeholder for the second book"></a>
+                            <p></p>
+                            <a id="bookWebsite-1"><p id="bookName-1"></p></a>
+                            <img id="bookPic-1"><img> 
+                            <p id="bookAuthor-1">Author</p>  
+                        </div>
+
+                        <div>
+                            <!-- This section will have dynamically generated cookbook images and titles -->
+                            <a> <img src = "https://placehold.co/600x400" alt = "This is a placeholder for the third book"></a>
+                            <p></p>    
+                            
+                            <a id="bookWebsite-2"><p id="bookName-2"></p></a>
+                            <img id="bookPic-2"><img> 
+                            <p id="bookAuthor-2"></p>  
+                        </div>
+
+                    </div>
+            </section>
+        </main>
+        
         <aside id="favorites-form">
             <h3>Favorites</h3>
             <div id = "favorite-storage">
@@ -107,14 +111,17 @@
                 
             </div>
         </aside>
-    </main>
-        <footer class = "footer">
-            <p>Made with care by...</p>
-            <div class ="footer-images" id = "footer-images">
-                <!-- Images will be placed here along the bottom when found-->
-            </div>
-        </footer>
-    <script src="./assets/js/script.js"></script>
+    </div>
+
+
+    <footer class = "footer">
+        <p>Made with care by...</p>
+        <div class ="footer-images" id = "footer-images">
+            <!-- Images will be placed here along the bottom when found-->
+        </div>
+    </footer>
+    
+        <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
