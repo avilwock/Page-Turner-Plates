@@ -9,10 +9,10 @@ var bookURL = `https://api.penguinrandomhouse.com/resources/v2/title/domains/PRH
 function saveRecipe(evt) {
     linkID = (evt.target.parentElement.children[0].id);
     recipeName = (evt.target.parentElement.children[1].innerHTML);
-    console.log (recipeName)
+    console.log(recipeName)
     recipeURL = (document.getElementById(linkID).getAttribute('href'))
 
-    var recipeToSave = {'RecipeName': recipeName, 'RecipleLink': recipeURL}
+    var recipeToSave = { 'RecipeName': recipeName, 'RecipleLink': recipeURL }
     localStorage.setItem('saved', JSON.stringify(recipeToSave))
 }
 
@@ -74,10 +74,12 @@ function searchbtn(event) {
             }
 
             var recipeSection = document.getElementById('recipes')
+            recipeSection.innerHTML = ""
 
             // for loop for recipe data
             for (let i = 0; i < 5; i++) {
                 if (recList.meals[i].strSource.trim() !== '') {
+
                     recipeDiv = document.createElement('div')
                     recipeLink = document.createElement('a')
                     recipeName = document.createElement('p')
@@ -88,7 +90,7 @@ function searchbtn(event) {
                     recipeFave.textContent = "Add to Favorites"
                     recipeName.setAttribute('id', `recName-${i}`)
                     recipeImg.setAttribute('id', `recpic-${i}`)
-                    recipeLink.setAttribute('id', `recWebsite-${i}` )
+                    recipeLink.setAttribute('id', `recWebsite-${i}`)
 
                     recipeName.textContent = recList.meals[i].strMeal;
                     recipeImg.setAttribute('src', recList.meals[i].strMealThumb);
@@ -106,38 +108,55 @@ function searchbtn(event) {
                     // document.querySelector('#recWebsite-' + i).setAttribute('href', recList.meals[i].strSource);
                 }
 
-
-
             }
-         
-        //     <div>         
-        //     <a id="recWebsite-0"><img id="recPic-0"></img></a> 
-        //     <p id="recName-0"></p>
-        //     <button id="favorites">Add to Favorites</button>
-        // </div>
 
-
-
-           
         })
 }
+
 
 // Fetch Funtion to pull books from API
 function bookSearch(event) {
     event.preventDefault();
     fetch(`https://api.penguinrandomhouse.com/resources/v2/title/domains/PRH.US/search?q=${recSearch.value}+cookbooks&api_key=npg4qc8fzyzb793s57jf4v2w`)
-
         .then(res => res.json())
         .then(bookList => {
             console.log(bookList)
             console.log(recSearch.value)
-            for (let i = 0; i < 3; i++) {
-                document.querySelector('#bookName-' + i).textContent = bookList.data.results[i].name;
-                document.querySelector('#bookAuthor-' + i).textContent =  bookList.data.results[i].author;
-               // document.querySelector('#bookWebsite-' + i).textContent = "https://www.penguinrandomhouse.com/" +bookList.data.results[i].url;
 
-                //   document.querySelector('#bookPic-' + i).setAttribute('src', recList.meals[i].strMealThumb);
-                document.querySelector('#bookWebsite-' + i).setAttribute('href', "https://www.penguinrandomhouse.com/" +bookList.data.results[i].url); 
+            var bookSection = document.getElementById('books')
+            bookSection.innerHTML = ""
+
+            let results = bookList.data.results.filter((result) => result.author != null)
+
+            for (let i = 0; i < 3; i++) {
+                
+
+                bookDiv = document.createElement('div')
+                bookLink = document.createElement('a')
+                bookName = document.createElement('p')
+                bookImg = document.createElement('img')
+                bookAuth = document.createElement('p')
+
+                bookName.setAttribute('id', `bookName-${i}`)
+                bookLink.setAttribute('id', `bookWebsite-${i}`)
+                bookAuth.setAttribute('id', `bookAuthor-${i}`)
+
+                bookName.textContent = results[i].name;
+            let authorSubstring = results[i].author[0].split("|").slice(-1)
+                bookAuth.textContent = authorSubstring
+                bookLink.setAttribute('href', "https://www.penguinrandomhouse.com/" + results[i].url);
+
+                bookLink.appendChild(bookName)
+                bookDiv.appendChild(bookLink)
+                bookDiv.appendChild(bookAuth)
+                bookSection.appendChild(bookDiv)
+
+
+
+
+                // document.querySelector('#bookName-' + i).textContent = bookList.data.results[i].name;
+                // document.querySelector('#bookAuthor-' + i).textContent = bookList.data.results[i].author[0];
+                // document.querySelector('#bookWebsite-' + i).setAttribute('href', "https://www.penguinrandomhouse.com/" + bookList.data.results[i].url);
             }
         })
 }
