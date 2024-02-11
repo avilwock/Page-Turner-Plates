@@ -6,6 +6,17 @@ var recipeURL = `https://www.themealdb.com/api/json/v1/1/search.php?s=${recSearc
 //Book Search API key npg4qc8fzyzb793s57jf4v2w -
 var bookURL = `https://api.penguinrandomhouse.com/resources/v2/title/domains/PRH.US/search?q=${recSearch.value}+cookbooks&api_key=npg4qc8fzyzb793s57jf4v2w`
 
+function saveRecipe(evt) {
+    linkID = (evt.target.parentElement.children[0].id);
+    recipeName = (evt.target.parentElement.children[1].innerHTML);
+    console.log (recipeName)
+    recipeURL = (document.getElementById(linkID).getAttribute('href'))
+
+    var recipeToSave = {'RecipeName': recipeName, 'RecipleLink': recipeURL}
+    localStorage.setItem('saved', JSON.stringify(recipeToSave))
+}
+
+
 // Fetch function to pull recipes from API
 function searchbtn(event) {
     event.preventDefault();
@@ -18,9 +29,9 @@ function searchbtn(event) {
     closeModal();
 
     for (let i = 0; i < 5; i++) {
-        document.querySelector('#recPic-' + i).setAttribute('src', '');
-        document.querySelector('#recWebsite-' + i).setAttribute('href', '');
-        document.querySelector('#recName-' + i).textContent = '';
+        // document.querySelector('#recPic-' + i).setAttribute('src', '');
+        // document.querySelector('#recWebsite-' + i).setAttribute('href', '');
+        // document.querySelector('#recName-' + i).textContent = '';
     }
 
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${recSearch.value}`)
@@ -36,16 +47,15 @@ function searchbtn(event) {
             if (totalResults <= 5) {
                 closeModal();
             }
-           
-                if (totalResults > maxResults) {
-                    var searchLink = 2;
-                    moreRecipes.innerHTML = " ";
-                    moreRecipes.setAttribute("data-href", `https://www.themealdb.com/api/json/v1/1/search.php?s=${recSearch.value}&page=${searchLink}`);
-                } else {
-                    moreRecipes.innerHTML = "";
-                    moreRecipes.removeAttribute("data-href");
-            
-                }
+
+            if (totalResults > maxResults) {
+                var searchLink = 2;
+                moreRecipes.innerHTML = " ";
+                moreRecipes.setAttribute("data-href", `https://www.themealdb.com/api/json/v1/1/search.php?s=${recSearch.value}&page=${searchLink}`);
+            } else {
+                moreRecipes.innerHTML = "";
+                moreRecipes.removeAttribute("data-href");
+            }
 
             if (totalResults > maxResults) {
                 openModal();
@@ -58,19 +68,57 @@ function searchbtn(event) {
                 var linkElement = document.createElement("a");
                 linkElement.href = recList.meals[i].strSource;
                 linkElement.textContent = recList.meals[i].strMeal;
-                
+
                 modalContent.appendChild(linkElement);
                 modalContent.appendChild(document.createElement("br"));
             }
 
+            var recipeSection = document.getElementById('recipes')
+
+            // for loop for recipe data
             for (let i = 0; i < 5; i++) {
                 if (recList.meals[i].strSource.trim() !== '') {
-                document.querySelector('#recName-' + i).textContent = recList.meals[i].strMeal;
-                document.querySelector('#recPic-' + i).setAttribute('src', recList.meals[i].strMealThumb);
-                document.querySelector('#recWebsite-' + i).setAttribute('href', recList.meals[i].strSource);
-                
+                    recipeDiv = document.createElement('div')
+                    recipeLink = document.createElement('a')
+                    recipeName = document.createElement('p')
+                    recipeFave = document.createElement('button')
+                    recipeImg = document.createElement('img')
+
+                    recipeFave.addEventListener('click', saveRecipe)
+                    recipeFave.textContent = "Add to Favorites"
+                    recipeName.setAttribute('id', `recName-${i}`)
+                    recipeImg.setAttribute('id', `recpic-${i}`)
+                    recipeLink.setAttribute('id', `recWebsite-${i}` )
+
+                    recipeName.textContent = recList.meals[i].strMeal;
+                    recipeImg.setAttribute('src', recList.meals[i].strMealThumb);
+                    recipeLink.setAttribute('href', recList.meals[i].strSource);
+
+                    recipeLink.appendChild(recipeImg)
+                    recipeDiv.appendChild(recipeLink)
+                    recipeDiv.appendChild(recipeName)
+                    recipeDiv.appendChild(recipeFave)
+                    recipeSection.appendChild(recipeDiv)
+
+
+                    // document.querySelector('#recName-' + i).textContent = recList.meals[i].strMeal;
+                    // document.querySelector('#recPic-' + i).setAttribute('src', recList.meals[i].strMealThumb);
+                    // document.querySelector('#recWebsite-' + i).setAttribute('href', recList.meals[i].strSource);
                 }
+
+
+
             }
+         
+        //     <div>         
+        //     <a id="recWebsite-0"><img id="recPic-0"></img></a> 
+        //     <p id="recName-0"></p>
+        //     <button id="favorites">Add to Favorites</button>
+        // </div>
+
+
+
+           
         })
 }
 
@@ -78,11 +126,19 @@ function searchbtn(event) {
 function bookSearch(event) {
     event.preventDefault();
     fetch(`https://api.penguinrandomhouse.com/resources/v2/title/domains/PRH.US/search?q=${recSearch.value}+cookbooks&api_key=npg4qc8fzyzb793s57jf4v2w`)
-    
+
         .then(res => res.json())
         .then(bookList => {
             console.log(bookList)
             console.log(recSearch.value)
+            for (let i = 0; i < 3; i++) {
+                document.querySelector('#bookName-' + i).textContent = bookList.data.results[i].name;
+                document.querySelector('#bookAuthor-' + i).textContent =  bookList.data.results[i].author;
+               // document.querySelector('#bookWebsite-' + i).textContent = "https://www.penguinrandomhouse.com/" +bookList.data.results[i].url;
+
+                //   document.querySelector('#bookPic-' + i).setAttribute('src', recList.meals[i].strMealThumb);
+                document.querySelector('#bookWebsite-' + i).setAttribute('href', "https://www.penguinrandomhouse.com/" +bookList.data.results[i].url); 
+            }
         })
 }
 var searchButton = document.querySelector("#fetch-button");
@@ -103,11 +159,11 @@ function RandomImages() {
     var footerImages = document.querySelector("#footer-images");
 
     footerImages.innerHTML = "";
-    
-    var displayedImages=[];
+
+    var displayedImages = [];
 
     var numberOfRecipes = 12; // can be changed later with sizing fixed. It seems fairly large now
-    
+
     var requests = Array.from({ length: numberOfRecipes }, () =>
         fetch("https://www.themealdb.com/api/json/v1/1/random.php")
             .then(response => response.json())
@@ -120,7 +176,7 @@ function RandomImages() {
 
                 var meal = randomMeal[0];
                 var recipeImage = meal.strMealThumb;
-                
+
                 //added so that images aren't repeated in the footer
                 if (!displayedImages.includes(recipeImage)) {
                     displayedImages.push(recipeImage);
@@ -144,9 +200,9 @@ document.addEventListener("DOMContentLoaded", RandomImages);
 
 var modal = document.getElementById("modal");
 var openModalButton = document.getElementById("fetch-button");
-var closeButton=document.getElementById("close")
+var closeButton = document.getElementById("close")
 
-function openModal () {
+function openModal() {
 
     document.querySelector('#modal span').addEventListener('click', function () {
         var pageLink = this.getAttribute('data-href');
@@ -163,12 +219,12 @@ function openModal () {
     }
 
     var modalContent = document.querySelector('.modal-contact p span');
-        modalContent.innerHTML = moreRecipes.innerHTML;
+    modalContent.innerHTML = moreRecipes.innerHTML;
 
-    if(moreRecipes.style.display !== "none") {
+    if (moreRecipes.style.display !== "none") {
         modal.style.display = "block";
 
-        
+
     } else {
         modal.style.display = "none";
     }
@@ -181,3 +237,8 @@ function closeModal() {
 openModalButton.addEventListener("click", openModal);
 
 closeButton.addEventListener("click", closeModal)
+
+
+//Define Favorites button
+//var favoritesButton = document.querySelector('#favorites')
+//favoritesButton.addEventListener('click', saveRecipe)
