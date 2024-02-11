@@ -1,3 +1,19 @@
+body {
+    display: flex;
+    flex-direction:column;
+    height: 100vh;
+    margin: 0;
+}
+
+.main-container {
+    display: flex;
+}
+
+header,
+footer {
+    width: 100%;
+}
+
 #footer-images {
     display: flex;
     justify-content: center;
@@ -40,6 +56,135 @@
 }
 
 .modal-contact p span a{
-    margin: 10px 0 !important;
+    margin: 10px;
 
+}
+
+.input.is-normal{
+    size: 60px;
+}
+
+.modal {
+    width: 300px;
+}
+
+#recipe-results {
+    border: 2px solid black;
+    flex: 1;
+    margin: 10px;
+    /* display:flex;
+    /* flex-wrap: wrap; */
+    /* justify-content: center;
+    margin: auto;
+    width: 50%;
+    margin-left: 200px; */
+} 
+
+.recipes {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   max-width: 1000px;
+   width: 100%;
+}
+
+.recipes > div {
+    flex: 0 1 calc(20% - 20px);
+    box-sizing: border-box;
+    text-align: center;
+    /* display: flex; */
+    /* flex-direction:column; */
+    /* align-items: center; */
+    margin: 10px;
+    /* flex: 1 0 20%; */
+    flex: 1;
+}
+
+.recipes img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.recipes p {
+    margin-top: 5px;
+}
+
+
+
+#book-search {
+     border: 2px solid black;
+     flex: 1;
+     margin: 10px;
+     /* display:flex;
+     justify-content: center;
+     margin: auto;
+     width: 50%;
+     margin-left: 200px; */
+}
+
+.books {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.books > div {
+    flex: 0 1 calc(20% - 20px);
+    box-sizing: border-box;
+    text-align: center;
+    /* display: flex; */
+    /* flex-direction:column; */
+    /* align-items: center; */
+    margin: 10px;
+    /* flex: 1 0 20%; */
+    flex: 1;
+}
+
+.books img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.books p {
+    margin-top: 5px;
+}
+
+
+#favorites-form {
+    margin-top: 500px;
+    border: 2px solid black;
+    flex: 1;
+    margin: 10px;
+    
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    width: 50%; */
+}
+
+#favorite-storage {
+    display: flex;
+    flex-direction: column;
+}
+
+#favorite-storage > div {
+    margin: 10px;
+}
+
+#favorite-storage img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+#favorite-storage p {
+    margin-top: 5px;
 }
