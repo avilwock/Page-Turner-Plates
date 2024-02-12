@@ -7,6 +7,7 @@ var recipeURL = `https://www.themealdb.com/api/json/v1/1/search.php?s=${recSearc
 var bookURL = `https://api.penguinrandomhouse.com/resources/v2/title/domains/PRH.US/search?q=${recSearch.value}+cookbooks&api_key=npg4qc8fzyzb793s57jf4v2w`
 
 function saveRecipe(evt) {
+    console.log("Save recipe function triggered");
     linkID = (evt.target.parentElement.children[0].id);
     recipeName = (evt.target.parentElement.children[1].innerHTML);
     console.log(recipeName)
@@ -15,10 +16,10 @@ function saveRecipe(evt) {
     // Retrieve existing saved recipes from localStorage
     var savedRecipesArray = localStorage.getItem('saved');
 
- feature-fixmodal
     // Use logical OR to default to an empty array if savedRecipesRaw is falsy
     var savedRecipes = JSON.parse(savedRecipesArray) || [];
 
+    var existingRecipeIndex = savedRecipes.findIndex(r=> r.RecipeName ===recipeName);
     // Ensure savedRecipes is an array
     if (!Array.isArray(savedRecipes)) {
         savedRecipes = [];
@@ -33,6 +34,8 @@ function saveRecipe(evt) {
 
         // Store the updated array back in localStorage
         localStorage.setItem('saved', JSON.stringify(savedRecipes));
+
+        displayRecipes();
     } else {
         console.log("Recipe already saved!");
     }
@@ -51,9 +54,11 @@ function saveRecipe(evt) {
 
         // Store the updated array back in localStorage
         localStorage.setItem('saved', JSON.stringify(savedRecipes));
+        
     } else {
         console.log("Recipe already saved!");
     }
+    displayRecipes();
 }
 
 function displayRecipes() {
@@ -147,6 +152,8 @@ function searchbtn(event) {
 
             var recipeSection = document.getElementById('recipes')
             recipeSection.innerHTML = ""
+
+            openModal();
 
             // for loop for recipe data
             for (let i = 0; i < 5; i++) {
