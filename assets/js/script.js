@@ -11,11 +11,83 @@ function saveRecipe(evt) {
     recipeName = (evt.target.parentElement.children[1].innerHTML);
     console.log(recipeName)
     recipeURL = (document.getElementById(linkID).getAttribute('href'))
+    console.log("Recipe URL:", recipeURL);
+    // Retrieve existing saved recipes from localStorage
+    var savedRecipesArray = localStorage.getItem('saved');
 
-    var recipeToSave = { 'RecipeName': recipeName, 'RecipleLink': recipeURL }
-    localStorage.setItem('saved', JSON.stringify(recipeToSave))
+ feature-fixmodal
+    // Use logical OR to default to an empty array if savedRecipesRaw is falsy
+    var savedRecipes = JSON.parse(savedRecipesArray) || [];
+
+    // Ensure savedRecipes is an array
+    if (!Array.isArray(savedRecipes)) {
+        savedRecipes = [];
+
+        //Check if the recipe is not in the array, add it
+    if (existingRecipeIndex === -1) {
+        // Create a new recipe object
+        var recipeToSave = { 'RecipeName': recipeName, 'RecipeLink': recipeURL };
+
+        // Push the new recipe to the array
+        savedRecipes.push(recipeToSave);
+
+        // Store the updated array back in localStorage
+        localStorage.setItem('saved', JSON.stringify(savedRecipes));
+    } else {
+        console.log("Recipe already saved!");
+    }
+    }
+
+    // Check if the recipe is already in the array
+    var existingRecipeIndex = savedRecipes.findIndex(r => r.RecipeName === recipeName);
+
+    // If the recipe is not in the array, add it
+    if (existingRecipeIndex === -1) {
+        // Create a new recipe object
+        var recipeToSave = { 'RecipeName': recipeName, 'RecipeLink': recipeURL };
+
+        // Push the new recipe to the array
+        savedRecipes.push(recipeToSave);
+
+        // Store the updated array back in localStorage
+        localStorage.setItem('saved', JSON.stringify(savedRecipes));
+    } else {
+        console.log("Recipe already saved!");
+    }
 }
 
+function displayRecipes() {
+    var savedRecipesRaw = localStorage.getItem('saved');
+    var savedRecipes = JSON.parse(savedRecipesRaw) || [];
+    var favoriteStorage = document.getElementById('favorite-storage');
+
+    favoriteStorage.innerHTML = '';
+
+    savedRecipes.forEach(function (recipe, index) {
+        console.log("Recipe:", recipe); // Log the entire recipe object
+        var favoritesButton = document.createElement('button');
+        favoritesButton.textContent = recipe.RecipeName;
+        favoritesButton.addEventListener("click", function () {
+            console.log("Button clicked for recipe:", recipe.RecipeName);
+
+            // Log the URL before navigating
+            console.log("Recipe URL:", recipe.RecipeLink);
+
+            // Check if the URL is present and not undefined
+            if (recipe.RecipeLink) {
+                // Navigate to the recipe URL in the same tab
+                window.open(recipe.RecipeLink, '_blank');
+            } else {
+                console.error("Recipe URL is undefined or not present for recipe:", recipe.RecipeName);
+                // Optionally, you can open a new tab or handle this situation differently
+            }
+        });
+        favoriteStorage.appendChild(favoritesButton);
+    });
+}
+
+// Call the displayRecipes function to initially populate the buttons
+displayRecipes();
 
 // Fetch function to pull recipes from API
 function searchbtn(event) {
