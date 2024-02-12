@@ -15,6 +15,7 @@ function saveRecipe(evt) {
     // Retrieve existing saved recipes from localStorage
     var savedRecipesArray = localStorage.getItem('saved');
 
+ feature-fixmodal
     // Use logical OR to default to an empty array if savedRecipesRaw is falsy
     var savedRecipes = JSON.parse(savedRecipesArray) || [];
 
