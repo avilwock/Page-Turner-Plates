@@ -8,6 +8,7 @@ var bookURL = `https://api.penguinrandomhouse.com/resources/v2/title/domains/PRH
 
 // Function to save recipe name and URL to local storage.  
 function saveRecipe(evt) {
+    console.log("Save recipe function triggered");
     linkID = (evt.target.parentElement.children[0].id);
     recipeName = (evt.target.parentElement.children[1].innerHTML);
     console.log(recipeName)
@@ -16,10 +17,10 @@ function saveRecipe(evt) {
     // Retrieve existing saved recipes from localStorage
     var savedRecipesArray = localStorage.getItem('saved');
 
- feature-fixmodal
     // Use logical OR to default to an empty array if savedRecipesRaw is falsy
     var savedRecipes = JSON.parse(savedRecipesArray) || [];
 
+    var existingRecipeIndex = savedRecipes.findIndex(r=> r.RecipeName ===recipeName);
     // Ensure savedRecipes is an array
     if (!Array.isArray(savedRecipes)) {
         savedRecipes = [];
@@ -34,6 +35,8 @@ function saveRecipe(evt) {
 
         // Store the updated array back in localStorage
         localStorage.setItem('saved', JSON.stringify(savedRecipes));
+
+        displayRecipes();
     } else {
         console.log("Recipe already saved!");
     }
@@ -52,9 +55,11 @@ function saveRecipe(evt) {
 
         // Store the updated array back in localStorage
         localStorage.setItem('saved', JSON.stringify(savedRecipes));
+        
     } else {
         console.log("Recipe already saved!");
     }
+    displayRecipes();
 }
 // Function will display the recipes under the favorite section.  Data pull from local storage
 function displayRecipes() {
@@ -146,7 +151,11 @@ function searchbtn(event) {
             var recipeSection = document.getElementById('recipes')
             recipeSection.innerHTML = ""
 
+            openModal();
+            
             // for loop to generate recipe Name, Image, URL in HTML recipe data section
+            
+            // for loop for recipe data
             for (let i = 0; i < 5; i++) {
                 //If statement to clear out previous search results displayed on page and not append to them.
                 if (recList.meals[i].strSource.trim() !== '') {
