@@ -1,11 +1,12 @@
 var recSearch = document.querySelector('#query');
 
-//Food recipe search API
+// Food recipe search API
 var recipeURL = `https://www.themealdb.com/api/json/v1/1/search.php?s=${recSearch.value}`
 
-//Book Search API key npg4qc8fzyzb793s57jf4v2w -
+// Book Search API  
 var bookURL = `https://api.penguinrandomhouse.com/resources/v2/title/domains/PRH.US/search?q=${recSearch.value}+cookbooks&api_key=npg4qc8fzyzb793s57jf4v2w`
 
+// Function to save recipe name and URL to local storage.  
 function saveRecipe(evt) {
     linkID = (evt.target.parentElement.children[0].id);
     recipeName = (evt.target.parentElement.children[1].innerHTML);
@@ -55,7 +56,7 @@ function saveRecipe(evt) {
         console.log("Recipe already saved!");
     }
 }
-
+// Function will display the recipes under the favorite section.  Data pull from local storage
 function displayRecipes() {
     var savedRecipesRaw = localStorage.getItem('saved');
     var savedRecipes = JSON.parse(savedRecipesRaw) || [];
@@ -89,10 +90,11 @@ function displayRecipes() {
 // Call the displayRecipes function to initially populate the buttons
 displayRecipes();
 
-// Fetch function to pull recipes from API
+// Search button function for recipe Data.
 function searchbtn(event) {
     event.preventDefault();
 
+    // Verify the function is finding data.
     if (recSearch.value.trim() === '') {
         console.log("Please enter a search query");
         return;
@@ -100,15 +102,11 @@ function searchbtn(event) {
 
     closeModal();
 
-    for (let i = 0; i < 5; i++) {
-        // document.querySelector('#recPic-' + i).setAttribute('src', '');
-        // document.querySelector('#recWebsite-' + i).setAttribute('href', '');
-        // document.querySelector('#recName-' + i).textContent = '';
-    }
-
+    // Fetch function to pull recipe data from API
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${recSearch.value}`)
         .then(res => res.json())
         .then(recList => {
+            // View recipe data provided by the API
             console.log(recList)
             console.log(recSearch.value)
 
@@ -148,8 +146,9 @@ function searchbtn(event) {
             var recipeSection = document.getElementById('recipes')
             recipeSection.innerHTML = ""
 
-            // for loop for recipe data
+            // for loop to generate recipe Name, Image, URL in HTML recipe data section
             for (let i = 0; i < 5; i++) {
+                //If statement to clear out previous search results displayed on page and not append to them.
                 if (recList.meals[i].strSource.trim() !== '') {
 
                     recipeDiv = document.createElement('div')
@@ -173,11 +172,6 @@ function searchbtn(event) {
                     recipeDiv.appendChild(recipeName)
                     recipeDiv.appendChild(recipeFave)
                     recipeSection.appendChild(recipeDiv)
-
-
-                    // document.querySelector('#recName-' + i).textContent = recList.meals[i].strMeal;
-                    // document.querySelector('#recPic-' + i).setAttribute('src', recList.meals[i].strMealThumb);
-                    // document.querySelector('#recWebsite-' + i).setAttribute('href', recList.meals[i].strSource);
                 }
 
             }
@@ -186,23 +180,25 @@ function searchbtn(event) {
 }
 
 
-// Fetch Funtion to pull books from API
+// Search button function for Book data. This will look for Book Title, Author, and URL.
 function bookSearch(event) {
     event.preventDefault();
     fetch(`https://api.penguinrandomhouse.com/resources/v2/title/domains/PRH.US/search?q=${recSearch.value}+cookbooks&api_key=npg4qc8fzyzb793s57jf4v2w`)
         .then(res => res.json())
         .then(bookList => {
+            // View bookdata provided by the API
             console.log(bookList)
             console.log(recSearch.value)
 
             var bookSection = document.getElementById('books')
+
             bookSection.innerHTML = ""
 
             let results = bookList.data.results.filter((result) => result.author != null)
 
+            // For loop to dynamically generate the Book data in the book data section.
             for (let i = 0; i < 3; i++) {
                 
-
                 bookDiv = document.createElement('div')
                 bookLink = document.createElement('a')
                 bookName = document.createElement('p')
@@ -213,6 +209,8 @@ function bookSearch(event) {
                 bookLink.setAttribute('id', `bookWebsite-${i}`)
                 bookAuth.setAttribute('id', `bookAuthor-${i}`)
 
+                // Book Data does not provide the URL prior to its query, we need to manually add it in.
+                // Author data was formated to have an ID with the author name separated with a | so we needed to split and remove it 
                 bookName.textContent = results[i].name;
             let authorSubstring = results[i].author[0].split("|").slice(-1)
                 bookAuth.textContent = authorSubstring
@@ -222,16 +220,11 @@ function bookSearch(event) {
                 bookDiv.appendChild(bookLink)
                 bookDiv.appendChild(bookAuth)
                 bookSection.appendChild(bookDiv)
-
-
-
-
-                // document.querySelector('#bookName-' + i).textContent = bookList.data.results[i].name;
-                // document.querySelector('#bookAuthor-' + i).textContent = bookList.data.results[i].author[0];
-                // document.querySelector('#bookWebsite-' + i).setAttribute('href', "https://www.penguinrandomhouse.com/" + bookList.data.results[i].url);
             }
         })
 }
+
+// Calling the search button
 var searchButton = document.querySelector("#fetch-button");
 
 searchButton.addEventListener("click", bookSearch);
@@ -328,8 +321,3 @@ function closeModal() {
 openModalButton.addEventListener("click", openModal);
 
 closeButton.addEventListener("click", closeModal)
-
-
-//Define Favorites button
-//var favoritesButton = document.querySelector('#favorites')
-//favoritesButton.addEventListener('click', saveRecipe)
