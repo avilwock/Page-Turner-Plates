@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Page Turner Plates</title>
+</head>
+
+<!-- This section creates the title, giving the entire document a background of info pulled from bulma.  -->
+<body class = "has-background-black">
+    <!-- This section sets the title of the page to have the largest text-size through bulma, center the text, and gives the background a dark version of the info pulled from bulma -->
+    <header class = "hero">
+        <h1 class = "is-size-1 has-text-centered has-background-info-dark has-text-weight-bold is-italic">Page Turner Plates</h1>
+    </header>
+
+    <!-- This is the container for the main part of the project -->
+    <div class = "main-container">
+
+        <!-- This section is for the search form -->
+        <section id="search-form">
+            <h2>Search:</h2>
+            <div class = "flex-box" id = "recipe-search">
+                <input type = "text" id = "query" name = "q" placeholder="Search">
+                <button  id = "fetch-button">Search</button>
+            </div>
+
+            <!-- This section creates the modal to view more recipes if more than five recipes are found-->
+            <div id ="modal" class = "modal">
+                <div class = "modal-contact">
+                    <p>To see more recipes, please click: <br> <span id = "more-recipes"></span></p>
+                    <span id = "close" class = "close"> &times;</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- This is the container for the recipes and the book search results -->
+        <main id = "main-content">
+            <!-- This gives the recipe results section a background color of dark info -->
+            <section class = "has-background-info-dark" id = "recipe-results">
+                <!--This gives the Recipes title a size class of 2, and centers the text-->
+                <h2 class = "is-size-2 has-text-centered has-text-weight-semibold">Recipes</h2>
+                <div class = "recipes" id = "recipes">
+                    
+                    <!--This section is dynamically generated from the javascript to include the recipe image, recipe name, and a favorites button
+                    linked to local storage. This also attaches a website url to connect to recipe website upon clicking the picture-->
+                   
+                </div>
+            </section>
+            
+            <section class = "has-background-info-dark" id = "book-search">
+                <h2 class = "is-size-2 has-text-centered has-text-weight-semibold">Cookbooks</h2>
+                <div class = "books" id = "books">
+
+                    <!--Dynamically generated content consisting of three book search results for the specific keyword, it includes the title, and author
+                    The title is turned into a link that takes you to the page for the suggested cookbook-->
+                
+                </div>
+            </section>
+        </main>
+        
+        <aside class = "has-background-info-dark"id="favorites-form">
+            <h3 class = "is-size-3 has-text-centered has-text-weight-semibold">Favorites</h3>
+            <div id = "favorite-storage">
+
+                <!--Dynamically generated content consisting of buttons with a recipe name that is a link to the recipe results. Content is pulled
+                from local storage-->
+               
+            </div>
+        </aside>
+    </div>
+
+    <!-- This gives the footer a background color of info -->
+    <footer class = "footer has-background-info">
+        <div class ="footer-images" id = "footer-images">
+            <!-- Images are dynamically generated at random from recipe images within the api, with a limit of 10-->
+        </div>
+        <!-- This centers the text for the credits -->
+        <p class = "has-text-centered">Made with care by <br>Danniel Merino, Amanda Vilwock, and Tou</p>
+    </footer>
+    
+        <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
