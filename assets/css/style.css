@@ -1,0 +1,305 @@
+/* This sets the body display to flex, with a direction of column. The height is set to 100 of the view height. The margin and padding are 
+set to 0, and the width is set to auto. The font is set to black */
+
+body {
+    display:flex;
+    flex-direction:column;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    color: black;
+}
+
+/*This sets the main-container element class to have a flex display, and to justify the content as space between*/
+.main-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* This sets both the header and the footer to have a width of 100% of the page */
+header,
+footer {
+    width: 100%;
+}
+
+/* This gives the footer a padding of 0 pixels to keep it at the bottom of the screen */
+.footer {
+    padding: 0px;
+}
+
+/*This sets the display for the footer to flex, and justifies the content to center, and aligns items to center
+There is a gap of 5 pixels in between pictures. The padding is set to 10 pixels. The max-width is set to 150 pixels
+and a margin of zero to center it*/
+#footer-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+    max-width: 150px;
+    margin: 0 auto;
+}
+
+/* This lets the images max-width be 100% of the container so they don't go past the boundary. The height is auto to
+keep the proper shape of the images, and the edges of the images are rounded to 8 pixels*/
+#footer-images img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+/*This sets the initial display to none so that it doesn't appear upon opening. The position is fixed so it stays
+within the page upon scrolling. It is generated 10% of the way down the page, and 50% from the left of the page.
+The background-color is set to white, and it has a padding of 10%. It has a solid black border of 4pixels in thickness.*/
+.modal {
+    display:none;
+    position:fixed;
+    top: 10%;
+    left: 50%;
+    background-color: white;
+    padding: 10px;
+    border: 4px solid black;
+}
+
+/*This is the close button, and has a color of black. It floats to the right with no margin. The size is set to
+28 pixels. The font is bold. The cursor for it is a pointer, and the position is absolute. It is placed at the top
+of the modal, and to the right 10px*/
+.close {
+    color: black;
+    float: right;
+    margin: 0px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top:0px;
+    right: 10px;
+}
+
+/*This sets the modal width to 300 pixels*/
+.modal {
+    width: 300px;
+}
+
+/*This sets the recipes to have a flex of 3 for sizing. The margin is set to 10 pixels. The width is set ot 1000 pixels
+The height is set to 500 pixels. The border radius is 8 pixels to round the corners. The box shadow is set to inset with
+a darker shade of the info color around each edge of the section.*/
+#recipe-results {
+    flex: 3;
+    margin: 10px;
+    width: 1000px;
+    height: 500px;
+    border-radius: 8px;
+    box-shadow:inset  0 0 10px 10px hsl(204, 84%, 34%)
+} 
+
+/*This sets the recipe section to have a display of flex, and to wrap the contents. The content is justified to the center.
+The max width of the recipes within the container is 1000 pixels, and the width is 100% of the container.*/
+.recipes {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   max-width: 1000px;
+   width: 100%;
+}
+
+/*This sets the child div elements of the recipes and books to prevent growth, that the items will shrink by one,
+Each div is set to take up 20% of the container, with 20 pixels less to prevent a crowded appearance. The
+text is aligned ot the center. The margin is set to 10 pixels, and it is give a flex of 3 */
+.recipes > div,
+.books > div {
+    flex: 0 1 calc(20% - 20px);
+    box-sizing: border-box;
+    text-align: center;
+    margin: 10px;
+    flex: 3;
+}
+
+/*This sets the links colors to be white so they are visible with the background color*/
+.books a {
+    color: white;
+    margin-top: 45px;
+}
+
+/*This sets the image to have a 100% width, a height of 100%, and a max height of 300 pixels within the
+container. The border radius is set to 8 pixels to round the corners. The objects are set to cover the 
+container*/
+.recipes img {
+    width: 100%;
+    height: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/*This sets the recipes text to be 5pixels from the top of the container*/
+.recipes p {
+    margin-top: 5px;
+}
+
+/*This moves the search form 160 pixels from the left*/
+#search-form {
+    margin-left: 160px;
+}
+
+/*This gives the book search a flex of 3, the margins are set to 10 pixels. The max
+width is set to take up 50% of the container, with 20 pixels separating to prevent a
+crowded look. The border radius is set to 8 pixels to give it arounded edge.
+The box shadow is set to inset with a darker infor border around the entire container*/
+#book-search {
+     flex: 3;
+     margin: 10px;
+     max-width: calc(50%-20px);
+     border-radius: 8px;
+     box-shadow:inset  0 0 10px 10px hsl(204, 84%, 34%);
+}
+
+/*This sets the book to a flex wrap display with the content justified to the center.
+The max-width is set to 1000px, with a width of 100% filling the container, and a height of
+pixels*/
+.books {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    max-width: 1000px;
+    width: 100%;
+    height: 200px;
+}
+
+/*This sets the book image width to 100% of the container, the height is set to audo. The
+max-width is 100% so it doesn't exceed the container. The border radius is set to 8 pixels to 
+give the images rounded corners*/
+.books img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/*This sets the book title to have a margin of 5 pixels from the top*/
+.books p {
+    font-weight: 600;
+    margin-top: 50px;
+}
+
+/*This gives the favorites form a width of 300pixels, a border radius of 8 pixels for rounded
+corners. The flex is set to one, the margin is 10 pixels. The box is moved 200 pixels from
+the right. The text is aligned to the center. The box-shadow is inset with a dark info border
+on all sides*/
+#favorites-form {
+    width: 300px;
+    border-radius: 8px;
+    flex: 1;
+    margin: 10px;
+    margin-right: 200px;
+    text-align:center;
+    box-shadow:inset  0 0 10px 10px hsl(204, 84%, 34%);
+}
+
+/*The favorites storage is set to a flex-column. It's given an overflow-y to give it a scroll bar
+The height is set ot 700 pixels. The items are aligned to the center*/
+#favorite-storage {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 700px;
+    align-items:center;
+}
+
+/*This gives the child divs in the storage section a margin of 10 pixels*/
+#favorite-storage > div {
+    margin: 10px;
+}
+
+/*This places the favorites title 5 pixels from the top*/
+#favorite-storage p {
+    margin-top: 5px;
+}
+
+/*This gives the favorite buttons rounded edges. The buttons are set to 30 pixels, and 350 pixels
+across. The content is alinged to the center. The background color is a dark info color. The
+filter brightness is set to make the button appear even darker. The margin is set to 5 pixels. This
+gives a font of white to the buttons for easier visibility*/
+#favorite-storage button {
+    border-radius: 8px;
+    height: 30px;
+    width: 250px;
+    align-content: center;
+    background-color: hsl(204, 84%, 34%);  
+    filter: brightness(80%); 
+    margin: 5px;
+    color: white;
+}
+
+/*This gives the modal a width of 15% of the page. The height is set to 60% of the page./
+The modal is given a scroll bar if too many items populate and can't all fit*/
+#modal {
+    width: 15%;
+    max-height: 60%;
+    overflow-y: auto;
+}
+
+/*This is the formatting for if the page is open on smaller screened mobile devices*/
+@media screen and (max-width: 767px) {
+
+    /*This sets the modal not to display and overrides previous instructions*/
+    .modal {
+        display: none !important;
+    }
+
+    /*This sets the main container to have a column flex, and to align content to the main axis*/
+    .main-container {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    /*This aligns the search form to the center*/
+    #search-form {
+        align-items:center;
+    }
+
+    /*This gives all of the content, the search forms, the favorites, the recipes results, the book search,
+    widths and max widths of 100%. The right margin is set to 0*/
+    #search-form,
+    #favorites-form,
+    #recipe-results,
+    #book-search {
+        width: 100%;
+        max-width: 100%;
+        margin-right: 0;
+    }
+
+    /*This sets the recipe results and book search results to have a max width and width of 100%
+    The margin right is set to 0, and the top is set to 10 pixels from the top*/
+    #recipe-results,
+    #book-search {
+        max-width: 100%;
+        width: 100%;
+        margin-right: 0;
+        margin-top: 10px;
+    }
+
+    /*This puts the search form at the top of the screen*/
+    #search-form {
+        order: 1;
+    }
+
+    /*This sets the favorits form second on the form, with a width of 100%*/
+    #favorites-form {
+        order: 2;
+        width: 100%;
+    }
+    
+    /*This sets the favorites storage to have a height of 200 pixels, and to scroll to
+    see all content*/
+    #favorite-storage {
+        height: 200px;
+        overflow-y: scroll;
+    }
+
+    /*This sets the main section, containing the recipes and book forms, to third*/
+    main {
+        order: 3;
+    }
+
+}
