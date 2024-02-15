@@ -9,7 +9,7 @@
 </head>
 
 <!-- This section creates the title, giving the entire document a background of info pulled from bulma.  -->
-<body class = "has-background-black">
+<body class = "has-background-black columns">
     <!-- This section sets the title of the page to have the largest text-size through bulma, center the text, and gives the background a dark version of the info pulled from bulma -->
     <header class = "hero">
         <h1 class = "is-size-1 has-text-centered has-background-info-dark has-text-weight-bold is-italic is-family-primary">Page Turner Plates</h1>
@@ -21,7 +21,7 @@
         <!-- This section is for the search form -->
         <section id="search-form">
             <h2>Search:</h2>
-            <div class = "flex-box" id = "recipe-search">
+            <div class = "column is-one-fifth flex-box" id = "recipe-search">
                 <input type = "text" id = "query" name = "q" placeholder="Search">
                 <button  id = "fetch-button">Search</button>
             </div>
@@ -36,11 +36,11 @@
         </section>
 
         <!-- This is the container for the recipes and the book search results -->
-        <main id = "main-content">
+        <main class = "column is-three-fifths" id = "main-content">
             <!-- This gives the recipe results section a background color of dark info -->
             <section class = "has-background-info-dark" id = "recipe-results">
                 <!--This gives the Recipes title a size class of 2, and centers the text-->
-                <h2 class = "is-size-2 has-text-centered has-text-weight-semibold">Recipes</h2>
+                <h2 class = "is-size-2 has-text-centered">Recipes</h2>
                 <div class = "recipes" id = "recipes">
                     
                     <!--This section is dynamically generated from the javascript to include the recipe image, recipe name, and a favorites button
@@ -50,7 +50,7 @@
             </section>
             
             <section class = "has-background-info-dark" id = "book-search">
-                <h2 class = "is-size-2 has-text-centered has-text-weight-semibold">Cookbooks</h2>
+                <h2 class = "is-size-2 has-text-centered">Cookbooks</h2>
                 <div class = "books" id = "books">
 
                     <!--Dynamically generated content consisting of three book search results for the specific keyword, it includes the title, and author
@@ -60,8 +60,8 @@
             </section>
         </main>
         
-        <aside class = "has-background-info-dark"id="favorites-form">
-            <h3 class = "is-size-3 has-text-centered has-text-weight-semibold">Favorites</h3>
+        <aside class = "column is-one-fifth has-background-info-dark" id="favorites-form">
+            <h3 class = "is-size-3 has-text-centered">Favorites</h3>
             <div id = "favorite-storage">
 
                 <!--Dynamically generated content consisting of buttons with a recipe name that is a link to the recipe results. Content is pulled
