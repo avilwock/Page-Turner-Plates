@@ -87,7 +87,6 @@ a darker shade of the info color around each edge of the section.*/
 #recipe-results {
     flex: 3;
     margin: 10px;
-    width: 1000px;
     height: 500px;
     border-radius: 8px;
     box-shadow:inset  0 0 10px 10px hsl(204, 84%, 34%)
@@ -99,7 +98,6 @@ The max width of the recipes within the container is 1000 pixels, and the width 
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
-   max-width: 1000px;
    width: 100%;
 }
 
@@ -139,7 +137,9 @@ container*/
 
 /*This moves the search form 160 pixels from the left*/
 #search-form {
+    margin-top: 20px;
     margin-left: 160px;
+    color: white;
 }
 
 /*This gives the book search a flex of 3, the margins are set to 10 pixels. The max
@@ -161,7 +161,6 @@ pixels*/
     display: flex;
     flex-wrap: wrap;
     justify-content:center;
-    max-width: 1000px;
     width: 100%;
     height: 200px;
 }
@@ -178,7 +177,6 @@ give the images rounded corners*/
 
 /*This sets the book title to have a margin of 5 pixels from the top*/
 .books p {
-    font-weight: 600;
     margin-top: 50px;
 }
 
@@ -187,10 +185,11 @@ corners. The flex is set to one, the margin is 10 pixels. The box is moved 200 p
 the right. The text is aligned to the center. The box-shadow is inset with a dark info border
 on all sides*/
 #favorites-form {
+    height: 770px;
     width: 300px;
     border-radius: 8px;
     flex: 1;
-    margin: 10px;
+    margin-top: 20px;
     margin-right: 200px;
     text-align:center;
     box-shadow:inset  0 0 10px 10px hsl(204, 84%, 34%);
@@ -202,7 +201,6 @@ The height is set ot 700 pixels. The items are aligned to the center*/
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    height: 700px;
     align-items:center;
 }
 
@@ -255,7 +253,7 @@ The modal is given a scroll bar if too many items populate and can't all fit*/
 
     /*This aligns the search form to the center*/
     #search-form {
-        align-items:center;
+       margin-left: 20%;
     }
 
     /*This gives all of the content, the search forms, the favorites, the recipes results, the book search,
@@ -277,6 +275,7 @@ The modal is given a scroll bar if too many items populate and can't all fit*/
         width: 100%;
         margin-right: 0;
         margin-top: 10px;
+        max-height: 90%;
     }
 
     /*This puts the search form at the top of the screen*/
@@ -301,4 +300,5 @@ The modal is given a scroll bar if too many items populate and can't all fit*/
     main {
         order: 3;
     }
+
 }
