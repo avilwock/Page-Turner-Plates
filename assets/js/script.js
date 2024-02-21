@@ -94,7 +94,8 @@ function displayRecipes() {
 
 // Call the displayRecipes function to initially populate the buttons
 displayRecipes();
-
+//sets the openModalButton variable to global
+var openModalButton;
 // Search button function for recipe Data.
 function searchbtn(event) {
     event.preventDefault();
@@ -123,6 +124,16 @@ function searchbtn(event) {
                 closeModal();
             }
 
+            if (totalResults > 5) {
+                // Create the More Recipes button only once
+                openModalButton = document.createElement('button');
+                openModalButton.textContent = "More Recipes";
+                openModalButton.addEventListener('click', openModal);
+                openModalButton.style.display = "block";
+                document.getElementById('recipe-results').appendChild(openModalButton);
+                openModalButton.classList.add("more-recipes-button");
+            }
+
             if (totalResults > maxResults) {
                 var searchLink = 2;
                 moreRecipes.innerHTML = " ";
@@ -130,10 +141,6 @@ function searchbtn(event) {
             } else {
                 moreRecipes.innerHTML = "";
                 moreRecipes.removeAttribute("data-href");
-            }
-
-            if (totalResults > maxResults) {
-                openModal();
             }
 
             var modalContent = document.querySelector('.modal-contact p span');
@@ -151,8 +158,6 @@ function searchbtn(event) {
             var recipeSection = document.getElementById('recipes')
             recipeSection.innerHTML = ""
 
-            openModal();
-            
             // for loop to generate recipe Name, Image, URL in HTML recipe data section
             
             // for loop for recipe data
@@ -165,13 +170,16 @@ function searchbtn(event) {
                     recipeName = document.createElement('p')
                     recipeFave = document.createElement('button')
                     recipeImg = document.createElement('img')
+                    openModalButton = document.createElement('button')
 
                     recipeFave.addEventListener('click', saveRecipe)
                     recipeFave.textContent = "Add to Favorites"
                     recipeName.setAttribute('id', `recName-${i}`)
                     recipeImg.setAttribute('id', `recpic-${i}`)
                     recipeLink.setAttribute('id', `recWebsite-${i}`)
-
+                    
+                    openModalButton.textContent = "More Recipes";
+                    openModalButton.addEventListener('click', openModal)
                     recipeName.textContent = recList.meals[i].strMeal;
                     recipeImg.setAttribute('src', recList.meals[i].strMealThumb);
                     recipeLink.setAttribute('href', recList.meals[i].strSource);
@@ -292,7 +300,6 @@ document.addEventListener("DOMContentLoaded", RandomImages);
 
 
 var modal = document.getElementById("modal");
-var openModalButton = document.getElementById("fetch-button");
 var closeButton = document.getElementById("close")
 
 function openModal() {
@@ -326,7 +333,5 @@ function openModal() {
 function closeModal() {
     modal.style.display = "none";
 }
-
-openModalButton.addEventListener("click", openModal);
 
 closeButton.addEventListener("click", closeModal)
